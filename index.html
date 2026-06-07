@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bc. František Ponzer - Umělecké portfolio a výzkum</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&family=Space+Mono&display=swap');
+
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --text-muted: #555555;
+      --border-color: #000000;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-mono: 'Space Mono', ui-monospace, monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding: 6rem 2rem;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Masthead */
+    .masthead {
+      margin-bottom: 5rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 2.5rem;
+    }
+    
+    .masthead-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    .masthead-title {
+      font-size: 3.75rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+    }
+
+    .masthead-subtitle {
+      font-size: 1.2rem;
+      font-weight: 400;
+      max-width: 700px;
+      margin-bottom: 2.5rem;
+      line-height: 1.4;
+      color: var(--text-color);
+    }
+
+    .masthead-contact {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      color: var(--text-color);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 0.15rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .contact-link:hover {
+      opacity: 0.5;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 5rem;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--border-color);
+      padding-bottom: 0.5rem;
+    }
+
+    /* Intro / Statement */
+    .intro-statement {
+      font-size: 1.35rem;
+      color: var(--text-color);
+      line-height: 1.5;
+      margin-bottom: 5rem;
+      font-weight: 300;
+      letter-spacing: -0.02em;
+    }
+
+    /* Timeline (Cultural Works) */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    
+    .timeline-item:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-year {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .timeline-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .timeline-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .timeline-details {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    /* Grid layout for secondary sections */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+    }
+
+    .list-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .list-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    
+    .list-item:last-child {
+      border-bottom: none;
+    }
+
+    .list-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+
+    .list-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-top: 0.1rem;
+    }
+
+    .list-meta {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    .sub-section {
+      margin-bottom: 2.5rem;
+    }
+
+    .sub-section-title {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Languages */
+    .lang-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lang-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    
+    .lang-row:last-child {
+      border-bottom: none;
+    }
+
+    .lang-name {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .lang-level {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Gallery / Exposition Media */
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    .gallery-item {
+      overflow: hidden;
+    }
+
+    .gallery-image-container {
+      background: #fcfcfc;
+      border: 1px solid var(--border-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Custom max-height styling for the portrait image to avoid massive scaling */
+    .portrait-container {
+      max-height: 700px;
+    }
+    .portrait-container .gallery-img {
+      max-height: 700px;
+      object-fit: contain;
+    }
+
+    .gallery-caption {
+      padding: 1rem 0;
+    }
+
+    .gallery-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+
+    .gallery-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 8rem;
+      text-align: left;
+      padding-top: 2rem;
+      border-top: 2px solid var(--border-color);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .grid-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      body {
+        padding: 4rem 1.5rem;
+      }
+      .masthead-title {
+        font-size: 2.8rem;
+        line-height: 1;
+      }
+      .timeline-item {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 1rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <!-- Masthead / Title section -->
+    <header class="masthead">
+      <span class="masthead-tag">Artistic Research Portfolio</span>
+      <h1 class="masthead-title">Bc. František Ponzer</h1>
+      <p class="masthead-subtitle">
+        Umělecká a filmová kritika, filmová a divadelní režie, produkce filmových festivalů (freelance)
+      </p>
+      
+      <div class="masthead-contact">
+        <a href="mailto:fr.ponzer@gmail.com" class="contact-link">
+          fr.ponzer@gmail.com
+        </a>
+        <a href="tel:+420775411650" class="contact-link">
+          +420 775 411 650
+        </a>
+      </div>
+    </header>
+
+    <!-- Introductory Statement -->
+    <div class="intro-statement">
+      Zabývám se uměleckým výzkumem na pomezí audiovizuálních studií, filmové a divadelní režie a estetiky. Ve své tvorbě a teoretické práci se soustředím na symptomatologii vnímání, prostorové chvění a narativní formy v experimentální tvorbě.
+    </div>
+
+    <!-- Kulturní příspěvky -->
+    <section>
+      <h2 class="section-title">Kulturní příspěvky</h2>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="timeline-year">2026/27</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Kapitoly z dějin hořkosti (krátký film)</h3>
+            <p class="timeline-details">Autorský, absolventský film na CAS FAMU (in progress)</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Avant-garde crying (riso prints)</h3>
+            <p class="timeline-details">Samostatná výstava, Galerie Označník, Praha, květen</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2026</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">The Silent Runners (audiovizuální esej)</h3>
+            <p class="timeline-details">Uvedení na festivalu ZERO, La Rochelle, Francie</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Symptomatologie (příspěvek na konferenci)</h3>
+            <p class="timeline-details">Přednáška v rámci artistic research na konferenci FLUVIALE, ART-Lab Vienna</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2025</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">spaces trembling (performance / expanded theatre)</h3>
+            <p class="timeline-details">Uvedení performance, Faktor K, Brno</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Art Symposium JANÁČEK ART</h3>
+            <p class="timeline-details">Role teoretika sympozia, Přibyslav</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2023</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">Vlakování (experimentální krátký dokument)</h3>
+            <p class="timeline-details">Uvedení na MFDF Ji.hlava</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-year">2022</div>
+          <div class="timeline-content">
+            <h3 class="timeline-title">What has the village been dreaming of? (fotografická série)</h3>
+            <p class="timeline-details">Uvedení na OFF GRID photo festival, Vídeň</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Education and Work Experience split layout -->
+    <div class="grid-container">
+      
+      <!-- Education -->
+      <section>
+        <h2 class="section-title">Vzdělání</h2>
+        <div class="list-container">
+          
+          <div class="list-item">
+            <h3 class="list-title">MgA. Audiovizuální studia</h3>
+            <p class="list-subtitle">FAMU CAS, Praha</p>
+            <span class="list-meta">2025 - 2027 (studující)</span>
+          </div>
+
+          <div class="list-item">
+            <h3 class="list-title">Mgr. Estetika a kulturní studia</h3>
+            <p class="list-subtitle">FF MUNI, Brno</p>
+            <span class="list-meta">2024 - 2026 (studující)</span>
+          </div>
+
+          <div class="list-item">
+            <h3 class="list-title">Bc. Aesthetics</h3>
+            <p class="list-subtitle">FF MUNI, Brno</p>
+            <span class="list-meta">Absolvováno 2024</span>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Relevant Experience -->
+      <section>
+        <h2 class="section-title">Pracovní zkušenosti</h2>
+        
+        <div class="sub-section">
+          <h4 class="sub-section-title">Produkce</h4>
+          <div class="list-container">
+            
+            <div class="list-item">
+              <h3 class="list-title">Marienbad Film Festival</h3>
+              <p class="list-subtitle">Výkonná produkce</p>
+              <span class="list-meta">2023 - dosud</span>
+            </div>
+
+            <div class="list-item">
+              <h3 class="list-title">LFŠ &amp; Anifilm Liberec</h3>
+              <p class="list-subtitle">Asistent produkce</p>
+              <span class="list-meta">2022 - dosud</span>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h4 class="sub-section-title">Přednášející &amp; Výzkum</h4>
+          <div class="list-container">
+            
+            <div class="list-item">
+              <h3 class="list-title">Archeologické muzeum Mikulčice</h3>
+              <p class="list-subtitle">Přednášející a průvodce</p>
+              <span class="list-meta">2019 - 2022</span>
+            </div>
+
+            <div class="list-item">
+              <h3 class="list-title">Česká Televize Brno</h3>
+              <p class="list-subtitle">Práce v archivu</p>
+              <span class="list-meta">2022</span>
+            </div>
+
+            <div class="list-item">
+              <h3 class="list-title">Pomocný archeolog</h3>
+              <p class="list-subtitle">Pohansko u Břeclavi, FF MUNI</p>
+              <span class="list-meta">2018</span>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+    <!-- Languages -->
+    <section>
+      <h2 class="section-title">Jazykové kompetence</h2>
+      <div class="lang-list">
+        <div class="lang-row">
+          <span class="lang-name">Anglický jazyk</span>
+          <span class="lang-level">C1</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Německý jazyk</span>
+          <span class="lang-level">A2-B1</span>
+        </div>
+        <div class="lang-row">
+          <span class="lang-name">Ruský jazyk</span>
+          <span class="lang-level">A2</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery / Research Exhibition Images -->
+    <section>
+      <h2 class="section-title">Obrazové přílohy</h2>
+      <div class="gallery">
+
+        <!-- Image 1: vlakovani.jpg (Landscape) -->
+        <div class="gallery-item">
+          <div class="gallery-image-container">
+            <img src="vlakovani.jpg" alt="Vlakování – experimentální krátký dokument" class="gallery-img">
+          </div>
+          <div class="gallery-caption">
+            <h3 class="gallery-title">Vlakování (2023)</h3>
+            <p class="gallery-desc">Experimentální krátký dokument, uvedený na MFDF Ji.hlava. Záběr z filmu.</p>
+          </div>
+        </div>
+
+        <!-- Image 2: spaces-trembling.jpg (Portrait) -->
+        <div class="gallery-item">
+          <div class="gallery-image-container portrait-container">
+            <img src="spaces-trembling.jpg" alt="spaces trembling – performance a expanded theatre" class="gallery-img">
+          </div>
+          <div class="gallery-caption">
+            <h3 class="gallery-title">spaces trembling (2025)</h3>
+            <p class="gallery-desc">Performance / expanded theatre uvedená v brněnském prostoru Faktor K. Dokumentační fotografie z představení.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      &copy; 2026 Bc. František Ponzer &bull; Připraveno pro Research Catalogue
+    </footer>
+
+  </div>
+</body>
+</html>
